@@ -1,6 +1,34 @@
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
+// ========== Api FOR Find Single student ============//
+export const GET = async (req, res) => {
+  const { searchParams } = new URL(req.url);
+  const id = parseInt(searchParams.get("id"));
+
+  const prisma = new PrismaClient();
+  try {
+    const result = await prisma.Users.findUnique({
+      where: { id: id },
+    });
+    return NextResponse.json(
+      {
+        message: "Success",
+        result,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: "Failed",
+        error: error.meta.cause,
+      },
+      { status: 404 }
+    );
+  }
+};
+
 // ========= Creating Single Student ==============//
 export const POST = async (req, res) => {
   const reqBody = await req.json();
