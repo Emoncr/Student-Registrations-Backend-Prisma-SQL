@@ -9,3 +9,22 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Users {
+  id         Int       @id @default(autoincrement())
+  first_name String    @db.VarChar(20)
+  last_name  String    @db.VarChar(20)
+  age        Int       @db.TinyInt
+  grade      String    @db.VarChar(20)
+  courses    Courses[]
+}
+
+model Courses {
+  id          Int    @id @default(autoincrement())
+  tittle      String
+  description String
+  author      String
+
+  StudentID Int
+  Users     Users @relation(fields: [StudentID], references: [id], onDelete: Restrict, onUpdate: Cascade)
+}
