@@ -5,21 +5,20 @@ export const POST = async (req, res) => {
   const reqBody = await req.json();
   const prisma = new PrismaClient();
   try {
-    const createdStudent = await prisma.Users.create({
-      data: reqBody,
+    const createdStudent = await prisma.Users.createMany({
+      data: reqBody, // Expect An Array of Objects
     });
     return NextResponse.json(
       {
-        message: "Student created successfully",
+        message: "Students created successfully",
         createdStudent,
       },
       { status: 201 }
     );
   } catch (error) {
     return NextResponse.json({
-      message: "Student Registration failed!",
+      message: "Students Registration failed!",
       error,
     });
   }
-  // return NextResponse.json(reqBody);
 };
