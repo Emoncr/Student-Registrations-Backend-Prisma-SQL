@@ -6,7 +6,7 @@ export const POST = async (req, res) => {
   const prisma = new PrismaClient();
   try {
     const createdStudent = await prisma.Users.create({
-      studentData: reqBody,
+      data: reqBody,
     });
     return NextResponse.json(
       {
@@ -16,7 +16,10 @@ export const POST = async (req, res) => {
       { status: 201 }
     );
   } catch (error) {
-    return NextResponse.json({ message: "Student Registration failed!" });
+    return NextResponse.json({
+      message: "Student Registration failed!",
+      error,
+    });
   }
-
+  // return NextResponse.json(reqBody);
 };
