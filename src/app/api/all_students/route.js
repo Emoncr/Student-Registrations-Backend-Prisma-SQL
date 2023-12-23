@@ -1,15 +1,15 @@
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
-// ========== Api FOR Find All students ============//
+// ==========API CREATED FOR GET ALL STUDENTS ============//
 export const GET = async (req, res) => {
   const prisma = new PrismaClient();
   try {
-    const result = await prisma.Users.findMany();
+    const students = await prisma.Users.findMany();
     return NextResponse.json(
       {
         message: "Success",
-        result,
+        students,
       },
       { status: 200 }
     );
