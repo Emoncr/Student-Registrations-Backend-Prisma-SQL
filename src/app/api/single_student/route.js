@@ -51,3 +51,33 @@ export const DELETE = async (req, res) => {
     );
   }
 };
+
+// ===========API For Update the student ==========//
+export const PATCH = async (req, res) => {
+  const { searchParams } = new URL(req.url);
+  const targetID = parseInt(searchParams.get("id"));
+  const reqBody = await req.json();
+
+  const prisma = new PrismaClient();
+
+  try {
+    const updatedStudent = await prisma.Users.update({
+      where: { id: targetID },
+      data: reqBody,
+    });
+    return NextResponse.json(
+      {
+        message: "Student Updated successfully",
+        updatedStudent,
+      },
+      { status: 202 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: error.meta.cause,
+      },
+      { status: 403 }
+    );
+  }
+};
