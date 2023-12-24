@@ -17,4 +17,7 @@ model Users {
   age        String @db.VarChar(50)
   grade      String @db.VarChar(20)
   courses    String
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @updatedAt @db.Timestamp(0)
 }
