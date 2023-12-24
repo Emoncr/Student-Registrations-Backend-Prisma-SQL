@@ -1,0 +1,143 @@
+1. Api for create single student
+    API_ROUTE: http://localhost:3000/api/single_student
+    METHODE:POST
+    Post Body: {
+                    "first_name": "Boplob Hasan",
+                    "last_name": "Emon",
+                    "age": "21",
+                    "grade": "A+",
+                    "courses": "bangla,english,math"
+                } 
+    Response: {
+                "message": "Student created successfully",
+                "createdStudent": {
+                    "id": 123,
+                    "first_name": "John",
+                    "last_name": "Doe",
+                    "age": "18",
+                    "grade": "12",
+                    "courses": "Math, Science"
+                }
+            }
+
+2. Api for registering many students at once
+    API_ROUTE: http://localhost:3000/api/all_students
+    METHODE:POST
+    POST BODY: [
+                {
+                    "first_name": "test 1",
+                    "last_name": "Emon",
+                    "age": "21",
+                    "grade": "A+",
+                    "courses": "courses"
+                },
+                {
+                    "first_name": "test 2",
+                    "last_name": "Emon",
+                    "age": "26",
+                    "grade": "A+",
+                    "courses": "courses"
+                },
+                {
+                    "first_name": "test 3 ",
+                    "last_name": "Emon",
+                    "age": "20",
+                    "grade": "A+",
+                    "courses": "courses"
+                }
+            ]
+    Response: {
+                 "message": "Students created successfully",
+                "createdStudent": {
+                        "count": 3
+                 }
+            }
+
+3. Api For Detele Single Student
+
+    API_ROUTE: http://localhost:3000/api/single_student?id=2      
+    METHODE:DELETE,
+    POST BODY:It receive an params name id 
+    Response:{
+                "message": "Student Deleted successfully",
+                "deletedStudent": {
+                    "id": 3,
+                    "first_name": "test 2",
+                    "last_name": "Emon",
+                    "age": "26",
+                    "grade": "A+",
+                    "courses": "courses"
+                }
+            }
+
+4. Api for update student informations
+    API_ROUTE: http://localhost:3000/api/single_student?id=2      // It receive an params name id 
+    METHODE:PATCH,
+    POST BODY : {
+                    "first_name": "Boplob  Hasan  [updated]"
+                }
+    Response:{
+                "message": "Student Updated successfully",
+                "updatedStudent": {
+                    "id": 6,
+                    "first_name": "Boplob  Hasan  [updated]",
+                    "last_name": "Emon",
+                    "age": "26",
+                    "grade": "A+",
+                    "courses": "courses"
+                }
+            }
+
+5. Api for show the data of a single student
+    API_ROUTE: http://localhost:3000/api/single_student?id=1      // It receive an params name id 
+    METHODE: GET
+    POST BODY:   It receive an params name id 
+    Response:{
+                "message": "Success",
+                "result": {
+                    "id": 1,
+                    "first_name": "Boplob Hasan",
+                    "last_name": "Emon",
+                    "age": "21",
+                    "grade": "A+",
+                    "courses": "courses"
+                }
+            }
+
+
+6. Api for get all students together.
+    API_ROUTE: http://localhost:3000/api/all_students
+    METHODE:GET
+    POST BODY: none,
+    Response: {
+    "message": "Success",
+    "students": [
+                {
+                    "id": 1,
+                    "first_name": "Boplob Hasan",
+                    "last_name": "Emon",
+                    "age": "21",
+                    "grade": "A+",
+                    "courses": "courses"
+                },
+                {
+                    "id": 4,
+                    "first_name": "test 3 ",
+                    "last_name": "Emon",
+                    "age": "20",
+                    "grade": "A+",
+                    "courses": "courses"
+                },
+                {
+                    "id": 5,
+                    "first_name": "test 1",
+                    "last_name": "Emon",
+                    "age": "21",
+                    "grade": "A+",
+                    "courses": "courses"
+                },
+            ]
+        }
+
+
+
